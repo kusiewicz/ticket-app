@@ -15,12 +15,12 @@ model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 
-  userId  String  @unique
+  authId  String  @unique
   handle  String  @unique
   name    String
   picture String
   email   String
-  Ticket  Ticket?
+  ticket  Ticket?
 }
 
 model Ticket {
