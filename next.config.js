@@ -5,7 +5,7 @@ module.exports = (phase) => {
 
   return {
     env: {
-      REDIRECT_URI: isDev
+      REDIRECT_URL: isDev
         ? 'http://localhost:3000/api/callback'
         : 'http://ticket-app-kusy.vercel.app/api/callback',
       POST_LOGOUT_REDIRECT_URI: isDev
