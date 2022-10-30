@@ -5,10 +5,10 @@ module.exports = (phase) => {
 
   return {
     env: {
-      REDIRECT_URL: isDev
+      REDIRECT_URI: isDev
         ? 'http://localhost:3000/api/callback'
         : 'http://ticket-app-kusy.vercel.app/api/callback',
-      POST_LOGOUT_REDIRECT_URL: isDev
+      POST_LOGOUT_REDIRECT_URI: isDev
         ? 'http://localhost:3000'
         : 'https://ticket-app-kusy.vercel.app/',
       AUTH0_SCOPE: 'openid email profile',
