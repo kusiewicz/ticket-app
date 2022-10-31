@@ -27,7 +27,7 @@ model Ticket {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 
-  ticketNr Int  @default(autoincrement())
+  ticketNr Int  @default(autoincrement()) @unique
   user     User @relation(fields: [userId], references: [id])
   userId   Int  @unique
 }
