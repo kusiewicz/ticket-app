@@ -39,7 +39,7 @@ const Ticket = (props: Props) => {
           </Flex>
         </Flex>
         <Text fontSize="4xl" fontWeight="800" color="tomato">
-          Awesomeness
+          React Conference
         </Text>
       </Flex>
       <Flex alignItems="center" borderLeftStyle="dashed" borderLeftWidth="2px" paddingLeft="1rem">

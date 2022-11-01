@@ -8,7 +8,6 @@ const init: NextApiHandler = async (req, res) => {
   try {
     const session = await getSession(req, res);
     const sessionUser = session.user;
-    console.log(sessionUser);
 
     const sub: string = sessionUser.sub;
     const nickname: string = sessionUser.nickname;
@@ -17,6 +16,7 @@ const init: NextApiHandler = async (req, res) => {
     const picture: string = sessionUser.picture;
 
     let user = await prisma.user.findFirst({ where: { authId: sub } });
+
     if (!user) {
       user = await prisma.user.create({
         data: {

@@ -3,9 +3,8 @@ import { NextApiHandler } from 'next';
 
 const callback: NextApiHandler = async (req, res) => {
   try {
-    await handleCallback(req, res, { redirectUri: '/api/init' });
+    await handleCallback(req, res, { redirectUri: process.env.REDIRECT_URI });
   } catch (e) {
-    console.log(e);
     res.status(e.status || 500).end(e.message);
   }
 };

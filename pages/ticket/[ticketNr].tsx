@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import ErrorPage from 'next/error';
 import { PrismaClient } from '@prisma/client';
-import { Button, Text, Flex, Link } from '@chakra-ui/react';
+import { Text, Flex, Link, Button, Box } from '@chakra-ui/react';
 import Ticket from '../../components/Ticket';
 import { TwitterShareButton } from 'react-share';
 import NextLink from 'next/link';
@@ -37,12 +37,12 @@ const TicketPage = ({ data, errorCode, isLoggedOut }: Props) => {
           url={`${process.env.SERVER_URL}/ticket/${data.ticketNr}`}
           title="Check out my ticket on this awesome ticket app! 👉 "
         >
-          <Button size="sm" color="blue" margin="1rem">
+          <Box w="140px" color="blue" background="gray.100" p="3px" borderRadius="6px">
             Share on Twitter
-          </Button>
+          </Box>
         </TwitterShareButton>
         {!isLoggedOut && (
-          <NextLink href="/api/logout" passHref>
+          <NextLink href="/api/auth/logout" passHref>
             <Link>
               <Button size="sm" color="red" margin="1rem">
                 Log out
@@ -59,12 +59,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params, req, res 
   const session = getSession(req, res);
 
   const ticketNr = Number(params.ticketNr);
+
   try {
     let ticket = (
       await prisma.ticket.findMany({
         where: { ticketNr: ticketNr },
       })
     )[0];
+    console.log(ticket);
     if (!ticket) {
       res.statusCode = 404;
       return {

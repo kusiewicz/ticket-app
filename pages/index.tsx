@@ -7,13 +7,13 @@ const IndexPage: NextPage = () => {
     <Flex direction="column" alignItems="center" padding="12rem">
       <Flex direction="column" alignItems="center" marginBottom="6rem">
         <Text fontSize="100px" fontWeight="800" textAlign="center">
-          The best conference ever.
+          Best React conference 2022.
         </Text>
         <Text fontSize="3xl" fontWeight="600">
           Totally free too.
         </Text>
       </Flex>
-      <NextLink href="/api/login" passHref>
+      <NextLink href="/api/auth/login" passHref>
         <Link
           _hover={{
             textDecoration: 'none',
